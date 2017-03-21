@@ -1,20 +1,19 @@
 $main-back: #548;
 $button-main: $main-back / 2;
 $margin-bottom: 6%;
-$button-width: 20%;
+$button-width: 50%;
 
 
 body {
   font-family: fantasy;
   font-size: 2vw;
   background: $main-back * 3;
-  text-align: center;
 }
 
 h2 {
   font-size: 3vw;
+  text-align: center;
   margin-bottom: $margin-bottom;
-  margin-top: $margin-bottom;
 
 }
 
@@ -26,12 +25,43 @@ button {
   background: $main-back / 3;
   color: #587;
   border: 0.2vw solid #587;
+  border-radius: 3px;
   cursor: pointer;
+  transition: 350ms all;
 }
 
-input {
-  background: $main-back / 3;
+input [type="text"]{
+  float: left;
+  width: $button-width;
+  margin-right: $margin-bottom;
   border: 0.2vw solid #587;
-  padding: 2% 0;
-  color: #587;
+  padding: 2%;
+  border: none;
+  border-radius: 3px;
+
+}
+
+pre {
+  font-family: monospace;
+  margin: $margin-bottom;
+}
+
+.container {
+  float: left;
+  width: $button-width;
+  margin: 5%;
+}
+
+.text-binder {
+  height: 15vw;
+  font-size: 3vw;
+  margin: $margin-bottom;
+  padding: 1vw;
+  color: #fff;
+  background: $main-back / 3;
+  border: dotted .25vw $main-back;
+
+  + input {
+    width: 100%;
+  }
 }
