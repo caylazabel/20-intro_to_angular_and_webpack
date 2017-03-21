@@ -14,10 +14,10 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [
+    loaders: [ //take static assets and turn them into javascript files
       {
         test: /\.scss$/,
-        loader: 'style!css!sass!'
+        loader: 'style!css!sass!' //from right to left//
       }
     ]
   }

@@ -1,12 +1,12 @@
 'use strict';
 
-require('./scss/reset.scss');
-require('./scss/main.scss');
+require('./scss/reset.scss'); //not js files//
+require('./scss/main.scss'); //loaders and webpack turn from static assests into js files//
 
-const angular = require('angular');
-const cowsay = require('cowsay-browser');
+const angular = require('angular'); //angular js//
+const cowsay = require('cowsay-browser'); //so we can interact with the cowsay browser//
 
-const cowsayApp = angular.module('cowsayApp', []);
+const cowsayApp = angular.module('cowsayApp', []); //cowsayApp is the name of the app, no other major dependencies in this structure// 
 
 cowsayApp.controller('CowsayController', ['$log', '$scope', CowsayController]);
 
