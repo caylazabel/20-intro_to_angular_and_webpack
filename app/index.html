@@ -1,34 +1,60 @@
 <!DOCTYPE html>
-<html ng-app="cowsayApp"> <!-- directive -->
-<head>
-  <title>Welcome to Cowville</title>
-</head>
-<body>
-  <section class = "container" ng-controller="CowsayController">
-    <h2>{{ cowsayCtrl.title }}</h2>
-    <input type="text" ng-model="cowsayCtrl.text">
+<html ng-app="cowsayApp">
+ <head>
+   <title>Welcome to Cowville</title>
+ </head>
+ <body>
+   <header>
+     <nav ng-controller="NavController as navCtrl">
+       <h4>cowcontrol.io</h4>
+       <ul>
+         <li ng-repeat="route in navCtrl.routes">
+           <a href="{{ route.url }}">{{ route.name }}</a>
+         </li>
+       </ul>
+     </nav>
+   </header>
 
-    <button ng-click="cowsayCtrl.logger(cowsayCtrl.text)">Yo log dis!</button>
+   <main>
+     <section
+       class="container"
+       ng-controller="CowsayController as cowsayCtrl"
+       ng-init="cowsayCtrl.current = 'squirell'">
+       <section>
+         <h2>{{ cowsayCtrl.title }}</h2> <h3> {{ cowsayCtrl.secondTitle }}</h3>
+       </section>
 
-    <pre class="cow">
-      {{ cowsayCtrl.speak(cowsayCtrl.text) }}
-    </pre>
+       <div class="animal">
+       <pre class="cow">
+         {{ cowsayCtrl.update(cowsayCtrl.text) }}
+       </pre>
+     </div>
+       <form
+         ng-submit="cowsayCtrl.speak(cowsayCtrl.text)"
+         name="cowsayForm"
+         novalidate>
+         <select ng-model="cowsayCtrl.current">
+           <option ng-repeat="cowfile in cowsayCtrl.cowfiles" value="{{ cowfile }}">
+           </option>
+         </select>
 
-<!-- <button ng-click="cowsayCtrl.spoke(cowsayCtrl.text)">old shit</button> -->
-<h2>{{cowsayCtrl.oldTitle}}</h2>
-  <pre>
-    {{ cowsayCtrl.spoke(cowsayCtrl.text) }}
-  </pre>
+         <input type="text" ng-model="cowsayCtrl.text" required>
+         <button type="submit">Say Something</button>
 
 
-  </section>
 
-  <section class="container" ng-controller="CowsayController">
-    <h2>2 Way Data Binding!!</h2>
+         <div class="animal" ng-show="cowsayCtrl.spoken" class="history">
+           <p class="divider">_____________________________________________________________________</p>
+           <section>
+             <h2>{{ cowsayCtrl.subTitle1 }}</h2> <h3> {{ cowsayCtrl.subTitle2 }}</h3>
+           </section>
+           <pre>
+             {{ cowsayCtrl.spoken }}
+           </pre>
 
-    <p class= "text-binder"> {{ cowsayCtrl.bindText }}</p>
-    <input type="text" ng-model="cowsayCtrl.bindText">
-  </section>
-</main>
-</body>
-</html>
+           <button type="button" ng-click="cowsayCtrl.undo()">Undo</button>
+         </div>
+       </form>
+     </section>
+   </main>
+ </body>
