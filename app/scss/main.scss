@@ -86,6 +86,20 @@ pre {
  border: solid .25vw black;
 }
 
+aside{
+  float: right;
+  width: 40%;
+  // height: 300px;
+  margin-top: $gutter-sm;
+  margin-right: $gutter-std;
+  color: $brand-primary;
+ }
+
+ .extra-wrapper {
+   margin-top: 10%;
+   margin-bottom: 10%;
+ }
+
 // :::: app styles ::::
 
 nav {
@@ -131,10 +145,8 @@ nav {
  + input {
    width: 100%;
  }
- // .divider{
- //   margin-bottom: : 2%;
- //
- // }
-
-
+ footer{
+   bottom: 1;
+   right: 1;
+  }
 }
